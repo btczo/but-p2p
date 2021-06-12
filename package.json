@@ -20,7 +20,7 @@
     "bcoin": "^1.0.2",
     "bloom-filter": "^0.2.0",
     "buffers": "bitpay/node-buffers#v0.1.2-bitpay",
-    "but": "github.com/btczo/but-js",
+    "but": "git://github.com/btczo/but-js",
     "socks5-client": "^0.3.6"
   },
   "devDependencies": {
