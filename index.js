@@ -1,4 +1,4 @@
-var digibyte = require('digibyte');
-digibyte.P2P = require('./lib');
+var but = require('but');
+but.P2P = require('./lib');
 
-module.exports = digibyte.P2P;
+module.exports = but.P2P;

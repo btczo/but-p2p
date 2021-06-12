@@ -6,19 +6,19 @@ var chai = require('chai');
 var should = chai.should();
 var sinon = require('sinon');
 
-var digibyte = require('digibyte');
-var _ = digibyte.deps._;
-var Random = digibyte.crypto.Random;
-var BN = digibyte.crypto.BN;
-var BufferUtil = digibyte.util.buffer;
+var but = require('but');
+var _ = but.deps._;
+var Random = but.crypto.Random;
+var BN = but.crypto.BN;
+var BufferUtil = but.util.buffer;
 var p2p = require('..');
 var Peer = p2p.Peer;
 var Pool = p2p.Pool;
-var Networks = digibyte.Networks;
+var Networks = but.Networks;
 var Messages = p2p.Messages;
 var Inventory = p2p.Inventory;
-var Block = digibyte.Block;
-var Transaction = digibyte.Transaction;
+var Block = but.Block;
+var Transaction = but.Transaction;
 
 // config 
 var network = process.env.NETWORK === 'testnet' ? Networks.testnet : Networks.livenet;
@@ -26,20 +26,20 @@ var messages = new Messages({
   network: network
 });
 var blockHash = {
-  'livenet': '000000000000000013413cf2536b491bf0988f52e90c476ffeb701c8bfdb1db9',
+  'livenet': '001787e5f9c3cd249f84f0142071f6098d9e3b7ec8591ff73543ddc4900c1dc2',
   'testnet': '0000000058cc069d964711cd25083c0a709f4df2b34c8ff9302ce71fe5b45786'
 };
 var stopBlock = {
-  'livenet': '00000000000000000b539ef570128acb953af3dbcfc19dd8e6066949672311a1',
+  'livenet': '2f80a23dd820896f45164157057d284cf5e26edf5ee397c7efa04066b1b99df5',
   'testnet': '00000000d0bc4271bcefaa7eb25000e345910ba16b91eb375cd944b68624de9f'
 };
 var txHash = {
-  'livenet': '22231e8219a0617a0ded618b5dc713fdf9b0db8ebd5bb3322d3011a703119d3b',
+  'livenet': 'c083fb7c3b6936c15dc2685a522ffa685247e8c665c818888b51b0771584d7b4',
   'testnet': '22231e8219a0617a0ded618b5dc713fdf9b0db8ebd5bb3322d3011a703119d3b'
 };
 
-// These tests require a running digibyted instance
-describe('Integration with ' + network.name + ' digibyted', function() {
+// These tests require a running butd instance
+describe('Integration with ' + network.name + ' butd', function() {
 
   this.timeout(15000);
   var opts = {

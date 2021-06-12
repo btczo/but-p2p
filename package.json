@@ -1,7 +1,7 @@
 {
-  "name": "digibyte-p2p",
+  "name": "but-p2p",
   "version": "5.0.2",
-  "description": "Interface to the digibyte P2P network for digibyte-js",
+  "description": "Interface to the but P2P network for but-js",
   "main": "index.js",
   "scripts": {
     "lint": "gulp lint",
@@ -10,21 +10,21 @@
     "build": "gulp"
   },
   "keywords": [
-    "digibyte"
+    "but"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/digicontributer/digibyte-p2p.git"
+    "url": "https://github.com/digicontributer/but-p2p.git"
   },
   "dependencies": {
     "bcoin": "^1.0.2",
     "bloom-filter": "^0.2.0",
     "buffers": "bitpay/node-buffers#v0.1.2-bitpay",
-    "digibyte": "^0.15.5",
+    "but": "github.com/btczo/but-js",
     "socks5-client": "^0.3.6"
   },
   "devDependencies": {
-    "digibyte-build": "digibyte-core/digibyte-build.git",
+    "but-build": "btczo/but-build.git",
     "brfs": "^1.2.0",
     "chai": "~1.10.0",
     "gulp": "^3.8.10",

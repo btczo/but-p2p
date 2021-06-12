@@ -7,7 +7,7 @@ var Buffers = require('buffers');
 var P2P = require('../../');
 var Messages = P2P.Messages;
 var messages = new Messages();
-var digibyte = require('digibyte');
+var but = require('but');
 var Data = require('../data/messages'); //todo merge with commandData
 var commandData = require('../data/messages.json');
 
@@ -25,31 +25,31 @@ describe('Messages', function() {
 
   describe('@constructor', function() {
     it('sets properties correctly', function() {
-      var network = digibyte.Networks.defaultNetwork;
+      var network = but.Networks.defaultNetwork;
       var messages = new Messages({
         network: network,
-        Block: digibyte.Block,
-        Transaction: digibyte.Transaction
+        Block: but.Block,
+        Transaction: but.Transaction
       });
       should.exist(messages.builder.commands);
       should.exist(messages.builder.constructors);
-      messages.builder.constructors.Block.should.equal(digibyte.Block);
-      messages.builder.constructors.Transaction.should.equal(digibyte.Transaction);
+      messages.builder.constructors.Block.should.equal(but.Block);
+      messages.builder.constructors.Transaction.should.equal(but.Transaction);
       messages.network.should.deep.equal(network);
     });
     it('network should be unique for each set of messages', function() {
       var messages = new Messages({
-        network: digibyte.Networks.livenet
+        network: but.Networks.livenet
       });
       var messages2 = new Messages({
-        network: digibyte.Networks.testnet
+        network: but.Networks.testnet
       });
-      messages.network.should.deep.equal(digibyte.Networks.livenet);
-      messages2.network.should.deep.equal(digibyte.Networks.testnet);
+      messages.network.should.deep.equal(but.Networks.livenet);
+      messages2.network.should.deep.equal(but.Networks.testnet);
       var message1 = messages.Version();
-      message1.network.should.deep.equal(digibyte.Networks.livenet);
+      message1.network.should.deep.equal(but.Networks.livenet);
       var message2 = messages2.Version();
-      message2.network.should.deep.equal(digibyte.Networks.testnet);
+      message2.network.should.deep.equal(but.Networks.testnet);
     });
   });
 
@@ -91,7 +91,7 @@ describe('Messages', function() {
       var name = messages.builder.commandsMap[command];
       it(name, function() {
         var message = messages[name]();
-        message.network.should.deep.equal(digibyte.Networks.defaultNetwork);
+        message.network.should.deep.equal(but.Networks.defaultNetwork);
       });
     });
 
@@ -194,11 +194,11 @@ describe('Messages', function() {
 
   describe('#add', function() {
     it('should add a custom message', function() {
-      var network = digibyte.Networks.defaultNetwork;
+      var network = but.Networks.defaultNetwork;
       var messages = new Messages({
         network: network,
-        Block: digibyte.Block,
-        Transaction: digibyte.Transaction
+        Block: but.Block,
+        Transaction: but.Transaction
       });
 
       var CustomMessage = function(arg, options) {
